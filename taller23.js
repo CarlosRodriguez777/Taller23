@@ -79,3 +79,18 @@ function dibujarCuadricula() {
         ctx.fillText(numY, 2, i - 2); // Número en el costado izquierdo
     }
 }
+/**
+ * Función para dibujar el píxel (x, y).
+ * @param {number} x - Coordenada X definida por el usuario.
+ * @param {number} y - Coordenada Y definida por el usuario.
+ */
+function plot(x, y) {
+    ctx.fillStyle = "red";
+    
+    // Multiplicamos por el tamaño de celda.
+    // Para Y, restamos de la altura total para que el 0 quede abajo.
+    let pixelX = x * tamanoCelda;
+    let pixelY = canvas.height - (y * tamanoCelda) - tamanoCelda; 
+    
+    ctx.fillRect(pixelX, pixelY, tamanoCelda, tamanoCelda);
+}
