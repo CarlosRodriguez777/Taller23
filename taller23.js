@@ -6,6 +6,44 @@
  * @param {number} y1 - Coordenada Y final.
  * @param {Function} plot - Función para dibujar el píxel (x, y).
  */
+
+function generarTablaBresenham(x0, y0, x1, y1) {
+    let dx = Math.abs(x1 - x0);
+    let dy = Math.abs(y1 - y0);
+    let sx = (x0 < x1) ? 1 : -1;
+    let sy = (y0 < y1) ? 1 : -1;
+    let err = dx - dy;
+
+    let cuerpoTabla = document.getElementById("cuerpoTabla");
+    cuerpoTabla.innerHTML = ""; // Limpiar tabla anterior
+
+    while (true) {
+        let e2 = 2 * err;
+
+        // Imprimir los valores actuales en la tabla
+        let fila = "<tr>";
+        fila += "<td>" + x0 + "</td>";
+        fila += "<td>" + y0 + "</td>";
+        fila += "<td>" + err + "</td>";
+        fila += "<td>" + e2 + "</td>";
+        fila += "</tr>";
+        
+        cuerpoTabla.innerHTML += fila;
+
+        if (x0 === x1 && y0 === y1) break;
+
+        if (e2 > -dy) {
+            err -= dy;
+            x0 += sx;
+        }
+
+        if (e2 < dx) {
+            err += dx;
+            y0 += sy;
+        }
+    }
+}
+
 function bresenham(x0, y0, x1, y1, plot) {
     // Cálculo de diferenciales y dirección del paso
     let dx = Math.abs(x1 - x0);
@@ -44,7 +82,14 @@ function iniciar() {
     let x1 = parseInt(document.getElementById("x1").value);
     let y1 = parseInt(document.getElementById("y1").value);
 
-    dibujarCuadricula(); // Llamamos a la nueva función 
+    // 1. Dibujar la cuadrícula con las escalas numéricas
+    dibujarCuadricula();
+    
+    // 2. Ejecutar la función ORIGINAL INTACTA para dibujar
+    bresenham(x0, y0, x1, y1, plot);
+
+    // 3. Ejecutar el NUEVO MÉTODO paralelo para llenar la tabla
+    generarTablaBresenham(x0, y0, x1, y1);
 }
 
 // Variables globales para el canvas
