@@ -82,6 +82,13 @@ function iniciar() {
     let x1 = parseInt(document.getElementById("x1").value);
     let y1 = parseInt(document.getElementById("y1").value);
 
+    //  Calculamos la coordenada más grande ---
+    let maximo = Math.max(x0, y0, x1, y1);
+
+    // Le sumamos 2 para dejar un pequeño margen vacío y que la línea no pegue con el borde
+    let celdasNecesarias = maximo + 2;
+    tamanoCelda = canvas.width / celdasNecesarias;
+    
     // 1. Dibujar la cuadrícula con las escalas numéricas
     dibujarCuadricula();
     
