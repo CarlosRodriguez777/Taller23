@@ -119,7 +119,7 @@ function dibujarCuadricula() {
         ctx.moveTo(i, 0);
         ctx.lineTo(i, canvas.height);
         ctx.stroke();
-        let numX = i / tamanoCelda;
+        let numX = Math.round(i / tamanoCelda);
         ctx.fillText(numX, i + 2, canvas.height - 2); // Número en la parte inferior
 
         // Líneas horizontales
@@ -127,7 +127,7 @@ function dibujarCuadricula() {
         ctx.moveTo(0, i);
         ctx.lineTo(canvas.width, i);
         ctx.stroke();
-        let numY = (canvas.height - i) / tamanoCelda; 
+        let numY = Math.round((canvas.height - i) / tamanoCelda);
         ctx.fillText(numY, 2, i - 2); // Número en el costado izquierdo
     }
 }

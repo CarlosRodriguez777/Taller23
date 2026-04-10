@@ -8,10 +8,10 @@
     <h1>Trazado de Línea - Bresenham</h1>
     
     <div >
-        <label>X0: <input type="number" id="x0" value="0"></label>
-        <label>Y0: <input type="number" id="y0" value="0"></label>
-        <label>X1: <input type="number" id="x1" value="10"></label>
-        <label>Y1: <input type="number" id="y1" value="8"></label>
+        <label>X0: <input type="number" id="x0" value="12"></label>
+        <label>Y0: <input type="number" id="y0" value="24"></label>
+        <label>X1: <input type="number" id="x1" value="30"></label>
+        <label>Y1: <input type="number" id="y1" value="17"></label>
         <button onclick="iniciar()">Dibujar</button>
     </div>
 
@@ -19,7 +19,7 @@
 
     <div style="display: flex; gap: 30px; align-items: flex-start; margin-top: 20px;">
         
-        <canvas id="miCanvas" width="600" height="600" style="border:1px solid black;"></canvas>
+        <canvas id="miCanvas" width="600" height="600" style="border:5px solid black;"></canvas>
 
         <div>
             <h3>Paso a Paso</h3>
@@ -38,19 +38,6 @@
         </div>
 
     </div>
-    
-    <table id="tablaValores" border="1">
-        <thead>
-            <tr>
-                <th>X</th>
-                <th>Y</th>
-                <th>Error (err)</th>
-                <th>e2</th>
-            </tr>
-        </thead>
-        <tbody id="cuerpoTabla">
-            </tbody>
-    </table>
 
     <script src="taller23.js"> </script>
 </body>
